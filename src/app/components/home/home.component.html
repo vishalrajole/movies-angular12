@@ -26,8 +26,7 @@
         <p *ngIf="!movie.backdrop_path">No image</p>
       </div>
       <div class="movie-overview">
-        <p class="movie-title" *ngIf="movie.title">{{ movie.title }}</p>
-        <p class="movie-title" *ngIf="movie.name">{{ movie.name }}</p>
+        <p class="movie-title">{{ movie.title ? movie.title : movie.name }}</p>
         <p
           class="movie-description"
           mat-raised-button
