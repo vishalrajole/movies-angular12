@@ -9,6 +9,7 @@ export interface Movie {
   overview: string;
   release_date: string;
   title: string;
+  name: string;
   runtime: number;
 
   //   adult: false;

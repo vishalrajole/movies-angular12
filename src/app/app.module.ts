@@ -7,6 +7,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +27,7 @@ import { HttpHeadersInterceptor } from './interceptors/http-headers.interceptors
     MatFormFieldModule,
     MatTabsModule,
     MatIconModule,
+    MatTooltipModule,
     MatSelectModule,
   ],
   providers: [

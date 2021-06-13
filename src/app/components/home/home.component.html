@@ -19,17 +19,25 @@
       <div class="movie-thumb-container">
         <img
           *ngIf="movie.backdrop_path"
-          src="{{ movie.backdrop_path }}"
+          [src]="getBackdropPath(movie)"
           alt="thumbnail"
           class="movie-thumbnail"
         />
         <p *ngIf="!movie.backdrop_path">No image</p>
       </div>
-      <div class="movie-description">
-        <p class="movie-name">{{ movie.title }}</p>
-        <p class="movie-name">{{ movie.overview }}</p>
-        <p class="movie-name">{{ movie.runtime }}</p>
-        <p class="movie-name">{{ movie.release_date }}</p>
+      <div class="movie-overview">
+        <p class="movie-title" *ngIf="movie.title">{{ movie.title }}</p>
+        <p class="movie-title" *ngIf="movie.name">{{ movie.name }}</p>
+        <p
+          class="movie-description"
+          mat-raised-button
+          matTooltip="{{ movie.overview }}"
+          matTooltipClass="overview-tooltip"
+        >
+          {{ movie.overview }}
+        </p>
+        <p class="movie-runtime">{{ movie.runtime }}</p>
+        <p class="movie-releasedate">{{ movie.release_date }}</p>
       </div>
     </div>
   </ng-container>

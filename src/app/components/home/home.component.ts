@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
-
+  // https://image.tmdb.org/t/p/w1400_and_h450_face/
   ngOnInit(): void {
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
       if (params['movie-search']) {
@@ -36,12 +36,16 @@ export class HomeComponent implements OnInit {
       .getMovieList(sort, search)
       .subscribe((gameList: APIResponse<Movie>) => {
         this.movies = gameList.results;
-        console.log(gameList);
+        console.log('gameList', gameList);
       });
   }
 
   goToMovieDetails(id: string): void {
     this.router.navigate(['details', id]);
+  }
+
+  getBackdropPath(movie: Movie): string {
+    return `https://image.tmdb.org/t/p/w1400_and_h450_face/${movie.backdrop_path}`;
   }
 
   ngOnDestroy(): void {
