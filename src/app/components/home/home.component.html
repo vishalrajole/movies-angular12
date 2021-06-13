@@ -13,29 +13,24 @@
   </mat-form-field>
 </div>
 
-<!-- <div class="games">  
-    <ng-container *ngFor="let game of games">
-      <div class="game" (click)="openGameDetails(game.id)">
-        <div class="game-thumb-container">
-          <img
-           *ngIf="game.background_image"
-            src="{{ game.background_image }}"
-            alt="thumbnail"
-            class="game-thumbnail"
-          />
-        <p *ngIf="!game.background_image">No image</p>
-        </div>
-        <div class="game-description">
-          <p class="game-name">{{ game.name }}</p>
-          <div class="game-platforms">
-            <img
-             *ngFor="let gamePlatform of game.parent_platforms"            
-              class="game-platform"
-              src="assets/images/platforms/{{ gamePlatform.platform.slug }}.svg"
-              alt="{{ gamePlatform.platform.slug }}"
-            />
-          </div>
-        </div>
+<div class="movies">
+  <ng-container *ngFor="let movie of movies">
+    <div class="movie" (click)="goToMovieDetails(movie.id)">
+      <div class="movie-thumb-container">
+        <img
+          *ngIf="movie.backdrop_path"
+          src="{{ movie.backdrop_path }}"
+          alt="thumbnail"
+          class="movie-thumbnail"
+        />
+        <p *ngIf="!movie.backdrop_path">No image</p>
       </div>
-    </ng-container> 
-  </div> -->
+      <div class="movie-description">
+        <p class="movie-name">{{ movie.title }}</p>
+        <p class="movie-name">{{ movie.overview }}</p>
+        <p class="movie-name">{{ movie.runtime }}</p>
+        <p class="movie-name">{{ movie.release_date }}</p>
+      </div>
+    </div>
+  </ng-container>
+</div>

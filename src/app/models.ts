@@ -3,7 +3,7 @@ export interface APIResponse<T> {
 }
 
 export interface Movie {
-  poster_path: string;
+  backdrop_path: string;
   genres: Array<Genres>;
   id: string;
   overview: string;
