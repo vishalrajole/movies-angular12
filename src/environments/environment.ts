@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   BASE_URL: 'https://api.themoviedb.org/3/',
+  API_KEY: '6dbcf6b4d31b238d4f21cd54be3ce1c1',
 };
 
 /*

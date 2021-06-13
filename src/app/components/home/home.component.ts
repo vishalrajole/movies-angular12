@@ -9,7 +9,7 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  public sort: string | undefined;
+  public sort!: string | '';
   public movies: Array<Movie> = [];
   private moviesSub: Subscription = new Subscription();
 
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  searchGames(sort: string, search?: string): void {
+  searchMovies(sort: string, search?: string): void {
     this.moviesSub = this.httpService
       .getMovieList(sort, search)
       .subscribe((gameList: APIResponse<Movie>) => {

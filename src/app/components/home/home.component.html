@@ -1,20 +1,19 @@
 <div class="filters">
-    <mat-form-field>
-      <mat-label>Sort</mat-label>
-      <mat-select
-        panelClass="sort-select"
-        [(ngModel)]="sort"
-        (selectionChange)="searchMovie(sort)"
-      >
-        <mat-option value="name">Name</mat-option>
-        <mat-option value="-released">Released</mat-option>
-        <mat-option value="-rating">Rating</mat-option>
-        
-      </mat-select>
-    </mat-form-field>
-  </div>
+  <mat-form-field>
+    <mat-label>Sort</mat-label>
+    <mat-select
+      panelClass="sort-select"
+      [(ngModel)]="sort"
+      (selectionChange)="searchMovies(sort)"
+    >
+      <mat-option value="name">Name</mat-option>
+      <mat-option value="-released">Released</mat-option>
+      <mat-option value="-rating">Rating</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
 
-  <!-- <div class="games">  
+<!-- <div class="games">  
     <ng-container *ngFor="let game of games">
       <div class="game" (click)="openGameDetails(game.id)">
         <div class="game-thumb-container">
@@ -37,6 +36,6 @@
             />
           </div>
         </div>
-      </div> -->
+      </div>
     </ng-container> 
-  </div>
+  </div> -->
