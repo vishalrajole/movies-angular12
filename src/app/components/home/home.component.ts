@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { sortBy } from 'lodash/fp';
 import { APIResponse, Movie } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
 
@@ -31,12 +32,25 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  sortMovies(movieList: Array<any>, sortByType: string): Array<any> {
+    if (sortByType === 'name') {
+      return sortBy('title')(movieList);
+    } else if (sortByType === 'released') {
+      return sortBy('release_date')(movieList);
+    } else if (sortByType === 'rating') {
+      return sortBy('vote_average', movieList);
+    } else {
+      return movieList;
+    }
+  }
+
   searchMovies(sort: string, search?: string): void {
     this.movieSub = this.httpService
       .getMovieList(sort, search)
-      .subscribe((gameList: APIResponse<Movie>) => {
-        this.movies = gameList.results;
-        console.log('gameList', gameList);
+      .subscribe((movieList: APIResponse<Movie>) => {
+        this.movies = this.sortMovies(movieList.results, sort);
+
+        console.log('gameList', movieList, this.movies);
       });
   }
 

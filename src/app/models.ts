@@ -8,9 +8,10 @@ export interface Movie {
   id: string;
   overview: string;
   release_date: string;
+  vote_average: number;
   title: string;
   name: string;
-  runtime: number;
+  original_language: string;
 
   //   adult: false;
   //   backdrop_path: '/qi6Edc1OPcyENecGtz8TF0DUr9e.jpg';

@@ -105,4 +105,10 @@
   &-overview-tooltip {
     font-size: 16px;
   }
+
+  &-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }

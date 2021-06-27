@@ -7,8 +7,8 @@
       (selectionChange)="searchMovies(sort)"
     >
       <mat-option value="name">Name</mat-option>
-      <mat-option value="-released">Released</mat-option>
-      <mat-option value="-rating">Rating</mat-option>
+      <mat-option value="released">Released</mat-option>
+      <mat-option value="rating">Rating</mat-option>
     </mat-select>
   </mat-form-field>
 </div>
@@ -35,8 +35,18 @@
         >
           {{ movie.overview }}
         </p>
-        <p class="movie-runtime">{{ movie.runtime }}</p>
-        <p class="movie-releasedate">{{ movie.release_date }}</p>
+        <div class="movie-info">
+          <p class="movie-releasedate" *ngIf="movie.release_date">
+            {{ movie.release_date }}
+          </p>
+          <p class="movie-language" *ngIf="movie.original_language">
+            {{ movie.original_language.toUpperCase() }}
+          </p>
+
+          <p class="movie-voteaverage" *ngIf="movie.vote_average">
+            {{ movie.vote_average }}
+          </p>
+        </div>
       </div>
     </div>
   </ng-container>
