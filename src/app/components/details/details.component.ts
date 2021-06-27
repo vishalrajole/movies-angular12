@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { APIResponse, Movie } from 'src/app/models';
+import { APIResponse, MovieDetails } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
 
 @Component({
@@ -11,25 +11,34 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class DetailsComponent implements OnInit {
   public gameId: string;
-  public movie!: Movie;
+  public movie!: MovieDetails;
   private routeSub!: Subscription;
   private movieSub!: Subscription;
 
-  constructor(private httpService: HttpService, private router: Router) {}
+  constructor(
+    private httpService: HttpService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
+      this.gameId = params['id'];
+      this.fetchMovieDetails(this.gameId);
+    });
+  }
 
   fetchMovieDetails(movieId: string): void {
     this.movieSub = this.httpService
       .getMovieDetails(movieId)
-      .subscribe((movie: APIResponse<Movie>) => {
-        // this.movie = movie.results;
+      .subscribe((movie: MovieDetails) => {
+        this.movie = movie;
 
         console.log('movie details', movie);
       });
   }
 
-  getBackdropPath(movie: Movie): string {
+  getBackdropPath(movie: MovieDetails): string {
     return `https://image.tmdb.org/t/p/w1400_and_h450_face/${movie.backdrop_path}`;
   }
 
