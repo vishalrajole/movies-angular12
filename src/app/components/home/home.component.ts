@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public sort!: string;
   public movies!: Array<Movie>;
   private routeSub!: Subscription;
-  private movieSub!: Subscription;
+  private moviesSub!: Subscription;
 
   constructor(
     private httpService: HttpService,
@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   searchMovies(sort: string, search?: string): void {
-    this.movieSub = this.httpService
+    this.moviesSub = this.httpService
       .getMovieList(sort, search)
       .subscribe((movieList: APIResponse<Movie>) => {
         this.movies = this.sortMovies(movieList.results, sort);
@@ -64,8 +64,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.movieSub) {
-      this.movieSub.unsubscribe();
+    if (this.moviesSub) {
+      this.moviesSub.unsubscribe();
     }
 
     if (this.routeSub) {

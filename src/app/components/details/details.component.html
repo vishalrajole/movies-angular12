@@ -1,1 +1,20 @@
-<p>details works!</p>
+<div class="details">
+  <div class="banner">
+    <img
+      *ngIf="movie.backdrop_path"
+      [src]="getBackdropPath(movie)"
+      alt="thumbnail"
+      class="movie-banner"
+    />
+  </div>
+  <div class="content">
+    <div class="wrapper">
+      <div class="header">
+        <h3>{{ movie.title ? movie.title : movie.name }}</h3>
+        <h4 *ngIf="movie.release_date" class="release-date">
+          {{ movie.release_date }}
+        </h4>
+      </div>
+    </div>
+  </div>
+</div>

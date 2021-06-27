@@ -27,4 +27,15 @@ export class HttpService {
       }
     );
   }
+
+  getMovieDetails(movieId: string): Observable<APIResponse<Movie>> {
+    let params = new HttpParams().set('language', 'en-US');
+
+    return this.http.get<APIResponse<Movie>>(
+      `${env.BASE_URL}/movie/${movieId}/`,
+      {
+        params: params,
+      }
+    );
+  }
 }
