@@ -13,29 +13,43 @@
         <h1>{{ movie.title ? movie.title : movie.name }}</h1>
       </div>
     </div>
+    <div class="game-gauge">
+      <mwl-gauge
+        class="three"
+        [max]="10"
+        [label]="renderGaugeLabel"
+        [dialStartAngle]="180"
+        [dialEndAngle]="0"
+        [value]="movieRating"
+        [animated]="true"
+        [color]="getColor"
+        [animationDuration]="2"
+      >
+      </mwl-gauge>
+    </div>
   </div>
 
   <div class="extra">
     <h4 *ngIf="movie.release_date" class="release-date">
       Release date - {{ movie.release_date }}
     </h4>
-    <h4 *ngIf="movie.release_date" class="release-date">
+    <h4 *ngIf="movie.genres" class="release-date">
       Genres -
       <span *ngFor="let genre of movie.genres">
         {{ genre.name }}
       </span>
     </h4>
-    <h4 *ngIf="movie.release_date" class="release-date">
+    <h4 *ngIf="movie.runtime" class="release-date">
       Runtime - {{ movie.runtime }} min
     </h4>
-    <h4 *ngIf="movie.release_date" class="release-date">
+    <!-- <h4 *ngIf="movie.vote_average" class="release-date">
       Vote average - {{ movie.vote_average }}
-    </h4>
-    <h4 *ngIf="movie.release_date" class="release-date">
+    </h4> -->
+    <h4 *ngIf="movie.vote_count" class="release-date">
       Vote count - {{ movie.vote_count }}
     </h4>
 
-    <h4 *ngIf="movie.release_date" class="release-date">
+    <h4 *ngIf="movie.revenue" class="release-date">
       Revenue - {{ movie.revenue }}
     </h4>
   </div>

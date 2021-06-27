@@ -10,7 +10,9 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent implements OnInit {
-  public gameId: string;
+  movieRating = 0;
+  gameId!: string;
+  // movieGaugeLabel: any;
   public movie!: MovieDetails;
   private routeSub!: Subscription;
   private movieSub!: Subscription;
@@ -34,12 +36,32 @@ export class DetailsComponent implements OnInit {
       .subscribe((movie: MovieDetails) => {
         this.movie = movie;
 
+        setTimeout(() => {
+          this.movieRating = this.movie.vote_average;
+        }, 1000);
+
         console.log('movie details', movie);
       });
   }
 
+  renderGaugeLabel = (): string => {
+    return this.movieRating.toString();
+  };
+
   getBackdropPath(movie: MovieDetails): string {
     return `https://image.tmdb.org/t/p/w1400_and_h450_face/${movie.backdrop_path}`;
+  }
+
+  getColor(value: number): string {
+    if (value > 7.5) {
+      return '#5ee432';
+    } else if (value > 5.0) {
+      return '#fffa50';
+    } else if (value > 3.0) {
+      return '#f7aa38';
+    } else {
+      return '#ef4655';
+    }
   }
 
   ngOnDestroy(): void {

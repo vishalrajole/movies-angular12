@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
+import { map } from 'rxjs/internal/operators/map';
 import { environment as env } from 'src/environments/environment';
 import { Movie, APIResponse, MovieDetails } from '../models';
 
@@ -30,9 +31,32 @@ export class HttpService {
 
   getMovieDetails(movieId: string): Observable<MovieDetails> {
     let params = new HttpParams().set('language', 'en-US');
+    const movieDetails = this.http.get<MovieDetails>(
+      `${env.BASE_URL}movie/${movieId}`,
+      { params }
+    );
 
-    return this.http.get<MovieDetails>(`${env.BASE_URL}movie/${movieId}`, {
-      params: params,
-    });
+    // const movieImages = this.http.get<MovieDetails>(
+    //   `${env.BASE_URL}movie/${movieId}/images`,
+    //   { params }
+    // );
+    // const movieVideos = this.http.get<MovieDetails>(
+    //   `${env.BASE_URL}movie/${movieId}/videos`,
+    //   { params }
+    // );
+
+    return forkJoin({
+      movieDetails,
+      // movieImages,
+      // movieVideos,
+    }).pipe(
+      map((resp: any) => {
+        return {
+          ...resp['movieDetails'],
+          // images: resp['movieImages'],
+          // videos: resp['movieVideos'].results,
+        };
+      })
+    );
   }
 }
