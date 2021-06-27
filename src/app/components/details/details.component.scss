@@ -4,34 +4,39 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
+}
 
-  &-banner {
-    height: 442px;
-    overflow: hidden;
+.banner {
+  height: 442px;
+  overflow: hidden;
 
-    &-img {
-      width: 100%;
-      filter: blur(5px);
-    }
+  &-img {
+    width: 100%;
+    filter: blur(5px);
   }
+}
 
-  &-content {
-    text-align: center;
-    position: relative;
-    top: -200px;
-  }
+.content {
+  text-align: center;
+  position: relative;
+  top: -40px;
+}
 
-  &-header {
-    &-title {
-      font-size: 36px;
-      color: #fff;
-      font-weight: 700;
-      line-height: 70px;
-      white-space: nowrap;
-    }
-    &-release-date {
-      color: #fff;
-      font-weight: 700;
-    }
+.header {
+  &-title {
+    font-size: 36px;
+    color: #fff;
+    font-weight: 700;
+    line-height: 70px;
+    white-space: nowrap;
   }
+  &-release-date {
+    color: #fff;
+    font-weight: 700;
+  }
+}
+
+.extra {
+  grid-template-columns: repeat(3, 4fr);
+  display: grid;
 }
