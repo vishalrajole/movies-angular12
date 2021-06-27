@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { sortBy } from 'lodash/fp';
@@ -10,7 +10,7 @@ import { HttpService } from 'src/app/services/http.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   public sort!: string;
   public movies!: Array<Movie>;
   private routeSub!: Subscription;
@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  // can be utility function
   sortMovies(movieList: Array<any>, sortByType: string): Array<any> {
     if (sortByType === 'name') {
       return sortBy('title')(movieList);
@@ -50,7 +51,7 @@ export class HomeComponent implements OnInit {
       .subscribe((movieList: APIResponse<Movie>) => {
         this.movies = this.sortMovies(movieList.results, sort);
 
-        console.log('gameList', movieList, this.movies);
+        console.log('movieList', movieList, this.movies);
       });
   }
 
