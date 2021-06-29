@@ -36,25 +36,25 @@ export class HttpService {
       { params }
     );
 
-    // const movieImages = this.http.get<MovieDetails>(
-    //   `${env.BASE_URL}movie/${movieId}/images`,
-    //   { params }
-    // );
-    // const movieVideos = this.http.get<MovieDetails>(
-    //   `${env.BASE_URL}movie/${movieId}/videos`,
-    //   { params }
-    // );
+    const movieImages = this.http.get<MovieDetails>(
+      `${env.BASE_URL}movie/${movieId}/images`,
+      { params }
+    );
+    const movieVideos = this.http.get<MovieDetails>(
+      `${env.BASE_URL}movie/${movieId}/videos`,
+      { params }
+    );
 
     return forkJoin({
       movieDetails,
-      // movieImages,
-      // movieVideos,
+      movieImages,
+      movieVideos,
     }).pipe(
       map((resp: any) => {
         return {
           ...resp['movieDetails'],
-          // images: resp['movieImages'],
-          // videos: resp['movieVideos'].results,
+          images: resp['movieImages'],
+          videos: resp['movieVideos'].results,
         };
       })
     );

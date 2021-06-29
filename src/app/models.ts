@@ -29,11 +29,28 @@ export interface MovieDetails {
   budget: number;
   revenue: number;
   runtime: number;
+  images: Images;
+  videos: Array<Videos>;
 }
 
 interface Genres {
   id: string;
   name: string;
+}
+
+interface Images {
+  id: string;
+  backdrops: Array<any>;
+  posters: Array<any>; // todo fix this
+}
+
+interface Videos {
+  data: {
+    name: string;
+    type: string;
+    site: string;
+    id: string;
+  };
 }
 
 //   adult: false;

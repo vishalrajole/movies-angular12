@@ -17,6 +17,7 @@ import { HomeComponent } from './components/home/home.component';
 import { HttpErrorInterceptor } from './interceptors/http-errors.interceptors';
 import { HttpHeadersInterceptor } from './interceptors/http-headers.interceptors';
 import { DetailsComponent } from './components/details/details.component';
+import { MovieTabsComponent } from './components/movie-tabs/movie-tabs.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { DetailsComponent } from './components/details/details.component';
     SearchBarComponent,
     HomeComponent,
     DetailsComponent,
+    MovieTabsComponent,
   ],
   imports: [
     BrowserModule,
