@@ -42,9 +42,6 @@
     <h4 *ngIf="movie.runtime" class="release-date">
       Runtime - {{ movie.runtime }} min
     </h4>
-    <!-- <h4 *ngIf="movie.vote_average" class="release-date">
-      Vote average - {{ movie.vote_average }}
-    </h4> -->
     <h4 *ngIf="movie.vote_count" class="release-date">
       Vote count - {{ movie.vote_count }}
     </h4>
@@ -52,6 +49,6 @@
     <h4 *ngIf="movie.revenue" class="release-date">
       Revenue - {{ movie.revenue }}
     </h4>
-    <app-movie-tabs [movie]="movie"></app-movie-tabs>
   </div>
+  <app-movie-tabs [movie]="movie"></app-movie-tabs>
 </div>

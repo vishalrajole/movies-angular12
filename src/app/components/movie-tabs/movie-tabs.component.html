@@ -27,8 +27,17 @@
       />
     </mat-tab>
     <mat-tab label="Videos" *ngIf="movie?.videos?.length">
-      <video class="movie-trailer" controls *ngFor="let video of movie.videos">
-        <source src="{{ video.key }}" type="video/mp4" />
+      <video
+        class="movie-trailer"
+        x-webkit-airplay="allow"
+        controls
+        *ngFor="let video of movie.videos"
+      >
+        <div class="movie-overview" [innerHTML]="video.name"></div>
+        <source
+          src="{{ 'https://www.youtube.com/watch?v=' + video.key }}"
+          type="video/mp4"
+        />
         Your browser does not support the video tag.
       </video>
     </mat-tab>

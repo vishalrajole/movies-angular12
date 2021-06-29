@@ -31,8 +31,21 @@ export interface MovieDetails {
   runtime: number;
   images: Images;
   videos: Array<Videos>;
+  production_companies: Array<Production>;
+  spoken_languages: Array<Languages>;
 }
 
+interface Languages {
+  english_name: string;
+  iso_639_1: string;
+  name: string;
+}
+interface Production {
+  id: number;
+  logo_path: string;
+  name: string;
+  origin_country: string;
+}
 interface Genres {
   id: string;
   name: string;
@@ -40,17 +53,16 @@ interface Genres {
 
 interface Images {
   id: string;
-  backdrops: Array<any>;
+  backdrops: Array<any>; // todo fix this
   posters: Array<any>; // todo fix this
 }
 
 interface Videos {
-  data: {
-    name: string;
-    type: string;
-    site: string;
-    id: string;
-  };
+  name: string;
+  type: string;
+  site: string;
+  id: string;
+  key: string;
 }
 
 //   adult: false;
