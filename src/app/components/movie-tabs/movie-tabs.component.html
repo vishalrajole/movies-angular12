@@ -1,8 +1,9 @@
 <div class="movie-tabs" *ngIf="movie">
   <mat-tab-group mat-align-tabs="start" backgroundColor="primary">
     <mat-tab label="About">
+      <div class="movie-overview" [innerHTML]="movie.overview"></div>
       <p *ngIf="movie.production_companies?.length" class="movie-tabs-par">
-        Productions:
+        <span class="movie-section-heading">Production: </span>
         <span
           *ngFor="let production of movie.production_companies; let last = last"
           >{{ production.name }}<span *ngIf="!last">, </span></span
@@ -10,21 +11,24 @@
       </p>
 
       <p *ngIf="movie.spoken_languages?.length" class="movie-tabs-par">
-        Languages:
+        <span class="movie-section-heading">Languages: </span>
         <span *ngFor="let language of movie.spoken_languages; let last = last"
           >{{ language.name }}<span *ngIf="!last">, </span></span
         >
       </p>
-
-      <div class="movie-overview" [innerHTML]="movie.overview"></div>
     </mat-tab>
-    <mat-tab label="Images" *ngIf="movie?.images">
-      <img
-        class="movie-poster"
-        *ngFor="let poster of movie.images.posters"
-        src="{{ poster.image }}"
-        alt="poster"
-      />
+    <mat-tab label="Images">
+      <div *ngIf="movie?.images?.posters?.length">
+        <img
+          class="movie-poster"
+          *ngFor="let poster of movie.images.posters"
+          src="{{ poster.image }}"
+          alt="poster"
+        />
+      </div>
+      <div *ngIf="!movie?.images?.posters?.length" class="movie-no-posters">
+        <span>No posters found</span>
+      </div>
     </mat-tab>
     <mat-tab label="Videos" *ngIf="movie?.videos?.length">
       <div *ngFor="let video of movie.videos">

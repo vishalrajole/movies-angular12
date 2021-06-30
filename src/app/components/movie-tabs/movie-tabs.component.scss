@@ -47,6 +47,13 @@
     padding: 20px;
   }
 
+  &-no-posters {
+    padding: 20px;
+  }
+  &-section-heading {
+    font-weight: 700;
+  }
+
   &-poster {
     margin-top: 5px;
     width: calc(50% - 10px);
