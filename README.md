@@ -1,15 +1,19 @@
 # MoviesAngular12
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.4.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Deployed at **Vercel** https://movies-angular12.vercel.app/
+- This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.4.
 
 ## env file
 
 Set .env file at root of the project with following two keys
-`javascript BASE_URL='API_BASE_URL' API_KEY='API_KEY' `
+```javascript
+BASE_URL='API_BASE_URL' 
+API_KEY='API_KEY'
+```
+
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
@@ -35,6 +39,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ![localhost_4200_](https://user-images.githubusercontent.com/4668780/123911063-96415180-d97b-11eb-88fe-af64e9e3e7d3.png)
 
+![localhost_4200_ (1)](https://user-images.githubusercontent.com/4668780/123911053-917c9d80-d97b-11eb-9e49-ce3703cb0871.png)
+
 ![localhost_4200_ (2)](https://user-images.githubusercontent.com/4668780/123911061-95102480-d97b-11eb-97c1-5b2a08181a42.png)
 
-![localhost_4200_ (1)](https://user-images.githubusercontent.com/4668780/123911053-917c9d80-d97b-11eb-9e49-ce3703cb0871.png)
+
